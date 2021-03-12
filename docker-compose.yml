@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  envoy:
+    build: ./envoy-a
+    ports:
+      - '8001:8001'
+      - '6379:6379'
+  redis-a:
+    image: "redis:alpine"
+    command: redis-server --requirepass password
+    ports:
+      - '6479:6379'
+  redis-b:
+    image: "redis:alpine"
+    command: redis-server --requirepass password
+    ports:
+      - '6579:6379'
